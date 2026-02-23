@@ -1,0 +1,10 @@
+{
+  "rules": [
+     
+  ],
+  "functions": { 
+    "ignite": "function ignite(status, ruleEngineResponse, root) {   try {     console.log('Root received inside ignite:', JSON.stringify(root, null, 2));     const response = { successEvents: [], failureEvents: [] };     if (ruleEngineResponse.results && ruleEngineResponse.results.length > 0) {       ruleEngineResponse.results.forEach((rule) => {         if (rule.result === true) {           response.successEvents.push({             type: rule.event.type,             params: rule.event.params,           });         }       });     }     if (       ruleEngineResponse.failureEvents &&       ruleEngineResponse.failureEvents.length > 0     ) {       ruleEngineResponse.failureEvents.forEach((failureEvent) => {         response.failureEvents.push({           type: failureEvent.type,           params: failureEvent.params,         });       });     }     const finalResponse = root;     return finalResponse;   } catch (error) {     return { error: true, function: 'ignite', message: error.message };   } }",
+    "processTPSRequest": "async function processTPSRequest(status, root) {   try {     console.log('Root before calling ignite:', JSON.stringify(root, null, 2));     const facts = createTPSFactsFromRoot(root);     const rulesConfig = loadRules('TPS');     const engine = initializeEngine(rulesConfig);     const result = await engine.run(facts);     console.log('Result from engine:', result);     return ignite(status, result, root);   } catch (error) {     return {       error: true,       function: 'processTPSRequest',       message: error.message,     };   } }",
+    "createTPSFactsFromRoot": "function createTPSFactsFromRoot(root) {   try {     const facts = {};     facts.product = root.product;     facts.status = root.status;     facts.versionNo = root.versionNo;     facts.policyFrom = root.policyFrom;     facts.policyTo = root.policyTo;     return facts;   } catch (error) {     return {       error: true,       function: 'createTPSFactsFromRoot',       message: error.message,     };   } }" 
+  }
+}

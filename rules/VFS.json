@@ -1,0 +1,36 @@
+{
+  "rules": [
+    {
+      "conditions": {
+        "all": [{ "fact": "age", "operator": "lessThan", "value": 40 }]
+      },
+      "event": {
+        "type": "LOW",
+        "params": { "premiumAmount": 5000 }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "age", "operator": "equal", "value": 40 }]
+      },
+      "event": {
+        "type": "MED",
+        "params": { "premiumAmount": 6500 }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "age", "operator": "greaterThan", "value": 40 }]
+      },
+      "event": {
+        "type": "High",
+        "params": { "premiumAmount": 8500 }
+      }
+    }
+  ],
+  "functions": { 
+    "ignite": "function ignite(status, ruleEngineResponse, root) {   try {       console.log('Root received inside ignite:', JSON.stringify(root, null, 2));     const response = { successEvents: [], failureEvents: [] };     if (ruleEngineResponse.results && ruleEngineResponse.results.length > 0) {       ruleEngineResponse.results.forEach((rule) => {         if (rule.result === true) {           response.successEvents.push({             type: rule.event.type,             params: rule.event.params,           });         }       });     }     if (       ruleEngineResponse.failureEvents &&       ruleEngineResponse.failureEvents.length > 0     ) {       ruleEngineResponse.failureEvents.forEach((failureEvent) => {         response.failureEvents.push({           type: failureEvent.type,           params: failureEvent.params,         });       });     }     const finalResponse = {       product: root.product,       status: root.status,       id: root.id,       versionNo: root.versionNo,       policyFrom: root.policyFrom,       policyTo: root.policyTo,       intermediaryId: root.intermediaryId,       accessToken: root.accessToken,       timestampCreated: root.timestampCreated,       timestampUpdated: root.timestampUpdated,       charges1: root.charges1,       charges2: root.charges2,       charges3: root.charges3,       userCreated: root.userCreated,       userUpdated: root.userUpdated,       productJSON: {         risk_locations: [           {             risk_details: [               {                 age: root.productJSON?.risk_locations?.risk_details?.age || 0,                 risk: response.successEvents?.[0]?.type || 'N/A',                 premiumAmount:                   response.successEvents?.[0]?.params?.premiumAmount || 0,               },             ],           },         ],       },     };     return finalResponse;   } catch (error) {     return { error: true, function: 'ignite', message: error.message };   } }",
+    "processVFSRequest": "async function processVFSRequest(status, root) {   try {     console.log('Root before calling ignite:', JSON.stringify(root, null, 2));     const facts = createVFSFactsFromRoot(root);     const rulesConfig = loadRules('VFS');     const engine = initializeEngine(rulesConfig);     const result = await engine.run(facts);     console.log('Result from engine:', result);     return ignite(status, result, root);   } catch (error) {     return {       error: true,       function: 'processVFSRequest',       message: error.message,     };   } }",
+    "createVFSFactsFromRoot": "function createVFSFactsFromRoot(root) {   try {     const facts = {};     facts.product = root.product;     facts.status = root.status;     facts.versionNo = root.versionNo;     facts.policyFrom = root.policyFrom;     facts.policyTo = root.policyTo;     facts.intermediaryId = root.intermediaryId;     facts.accessToken = root.accessToken;     facts.timestampCreated = root.timestampCreated;     facts.timestampUpdated = root.timestampUpdated;     facts.age = root.productJSON?.risk_locations?.risk_details?.age || 0;     return facts;   } catch (error) {     return {       error: true,       function: 'createVFSFactsFromRoot',       message: error.message,     };   } }" 
+  }
+}

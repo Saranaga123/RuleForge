@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?><quote>
+    <branchCode>HO</branchCode>
+    <charges1>0.00</charges1>
+    <charges2>0.00</charges2>
+    <charges3>0.00</charges3>
+    <id>104854</id>
+    <productConfigCollection>
+    <productConfig id="ERGO_TPS_DECLINE_EMAIL_ADDRESS">uidev.nimeshfonseka@gmail.com</productConfig>
+    </productConfigCollection>
+    <intermediary>DIRECT</intermediary>
+    <annualPremium>0.00</annualPremium>
+    <payableGrossPremium>0.00</payableGrossPremium>
+    <payableNetPremium>0.00</payableNetPremium>
+    <charges1>0.00</charges1>
+    <charges2>0.00</charges2>
+    <charges3>0.00</charges3>
+    <policyFrom>2025-06-05</policyFrom>
+    <policyTo>2025-06-06</policyTo>
+    <product>TPS</product>
+    <quoteNo>SQTPS25091481</quoteNo>
+    <status>RQ</status>
+    <teamCode>INTERNET</teamCode>
+    <timestampCreated>2025-06-05T14:57:14.000+05:30</timestampCreated>
+    <timestampUpdated>2025-06-05T14:57:39.000+05:30</timestampUpdated>
+    <userCreated>SYSTEM</userCreated>
+    <userUpdated>SYSTEM</userUpdated>
+    <versionNo>0</versionNo>
+    <risk effective="2025-06-05" version="1.5" code="TPS">
+    <crownRegions>
+    <crownRegion name="ASEAN" code="1" selected="?">
+    <premium>138</premium>
+    </crownRegion>
+    <crownRegion name="ASIA" code="2" selected="?">
+    <premium>180</premium>
+    </crownRegion>
+    <crownRegion name="Worldwide" code="3" selected="?">
+    <premium>283</premium>
+    </crownRegion>
+    </crownRegions>
+    <plans>
+    <plan mostPopular="" selected="true">
+    <benefits>
+    <benefit category="Medical" name="Overseas medical expenses incurred due to sickness or injury" id="1">
+    <limit name="Insured person (under 70 years)" id="1" coverage="$200,000"/>
+    <limit name="Insured person (above 70 years)" id="1" coverage="$100,000"/>
+    <limit name="Insured child in a family plan" id="1" coverage="$50,000"/>
+    </benefit>
+    <benefit category="Medical" name="Medical expenses incurred in Singapore post trip" id="2">
+    <limit name="Insured person (under 70 years)" id="2" coverage="$10,000"/>
+    <limit name="Insured person (above 70 years)" id="2" coverage="$1,000"/>
+    <limit name="Insured child in a family plan" id="2" coverage="$3,000"/>
+    </benefit>
+    <benefit category="Medical" name="Medical expenses incurred overseas associated with women's pregnancy" id="3" coverage="$2,000"/>
+    <benefit category="Medical" name="Treatment by physician (including Traditional Chinese Medical (TCM) practitioner and chiropractor)" id="4" coverage="$250"/>
+    <benefit category="Medical" name="Hospital allowance for hospitalization during the trip due to injury or sickness (daily income)" id="5">
+    <limit name="Overseas - $200 for each continuous 24-hour period" id="3" coverage="$10,000"/>
+    <limit name="In Singapore - $100 for each continuous 24-hour period" id="3" coverage="$500"/>
+    </benefit>
+    <benefit category="Emergency assistance" name="Emergency medical evacuation and medical repatriation" id="6" coverage="Unlimited"/>
+    <benefit category="Emergency assistance" name="Repatriation of mortal remains or funeral expenses overseas" id="7">
+    <benefit name="a) Repatriation of mortal remains or funeral expenses overseas" id="2" coverage="Unlimited"/>
+    <benefit name="b) Repatriation of mortal remains or funeral expenses overseas due to Pre-existing Medical Condition">
+    <limit name="Insured person (under 70 years)" id="2" coverage="$100,000"/>
+    <limit name="Insured person (above 70 years)" id="2" coverage="$50,000"/>
+    <limit name="Insured child in a family plan" id="2" coverage="$100,000"/>
+    </benefit>
+    </benefit>
+    <benefit category="Emergency assistance" name="Emergency dental treatment - accident" id="8" coverage="$1,000"/>
+    <benefit category="Emergency assistance" name="Compassionate visit - Flying a loved one to your side if you are hospitalised" id="9" coverage="$5,000"/>
+    <benefit category="Emergency assistance" name="Hospital visitation" id="10" coverage="$5,000"/>
+    <benefit category="Emergency assistance" name="Child transfer - Flying your child home if you are hospitalised or dead" id="11" coverage="$5,000"/>
+    <benefit category="Emergency assistance" name="Emergency telephone and internet expenses" id="12" coverage="$200"/>
+    <benefit category="Emergency assistance" name="Automatic extension of policy for up to 30 days" id="13" coverage="Yes"/>
+    <benefit category="Personal Accident" name="Accidental death and permanent disablement" id="14">
+    <limit name="Insured person (under 70 years)" id="4" coverage="$200,000"/>
+    <limit name="Insured person (above 70 years)" id="4" coverage="$50,000"/>
+    <limit name="Insured child in a family plan" id="4" coverage="$50,000"/>
+    </benefit>
+    <benefit category="Personal Accident" name="Common carrier double cover" id="15" coverage="">
+    <limit name="Insured person (under 70 years)" id="5" coverage="NA"/>
+    <limit name="Insured person (above 70 years)" id="5" coverage="NA"/>
+    <limit name="Insured child in a family plan" id="5" coverage="NA"/>
+    </benefit>
+    <benefit category="Personal Accident" name="Child education protection ($5000 per child, max 4 children)" id="16" coverage="$10,000"/>
+    <benefit category="Travel Inconvenience" name="Trip cancellation" id="17">
+    <limit name="I) Trip cancelled before you leave Singapore" id="6" coverage="$10,000"/>
+    <limit name="II) Replacement of traveler" id="6" coverage="$500"/>
+    </benefit>
+    <benefit category="Travel Inconvenience" name="Trip postponement - Trip postponed before you leave Singapore" id="18" coverage="$1,000"/>
+    <benefit category="Travel Inconvenience" name="Trip cancellation due to insolvency" id="19" coverage="$5,000"/>
+    <benefit category="Travel Inconvenience" name="Trip Curtailment - Trip cut short after you have left Singapore" id="20" coverage="$10,000"/>
+    <benefit category="Travel Inconvenience" name="Loss of baggage including laptop computer and jewellery" id="21" coverage="$3,000">
+    <limit name="Single article limits" id="7" coverage="$500"/>
+    <limit name="Sub-limit for laptop/computer/tablet" id="7" coverage="$1,000"/>
+    <limit name="Sub-limit for jewellery and souvenirs" id="7" coverage="$250"/>
+    </benefit>
+    <benefit category="Travel Inconvenience" name="Baggage delay - $200 for every full 6 consecutive hours of delay whilst overseas and $200 max whilst in Singapore" id="22">
+    <limit name="$200 for every full 6 consecutive hours of delay whilst overseas $200 max whilst in Singapore" id="8" coverage="$500"/>
+    </benefit>
+    <benefit category="Travel Inconvenience" name="Loss of passport, travel documents and money" id="23" coverage="$1,000"/>
+    <benefit category="Travel Inconvenience" name="Flight diversion" id="24" coverage="$1,000"/>
+    <benefit category="Travel Inconvenience" name="Flight Overbooking" id="25" coverage="$200"/>
+    <benefit category="Travel Inconvenience" name="Trip delay- $100 for every full 6 consecutive hours of delay whilst overseas and $100 max whilst in Singapore" id="26">
+    <limit name="$100 for every full 6 consecutive hours of delay whilst overseas $100 max whilst in Singapore" id="9" coverage="$1,000"/>
+    </benefit>
+    <benefit category="Travel Inconvenience" name="Trip misconncetion" id="27" coverage="$200"/>
+    <benefit category="Other benefits" name="Credit Card Indemnity" id="28" coverage="$500"/>
+    <benefit category="Other benefits" name="Personal Liability Overseas" id="29" coverage="$500,000"/>
+    <benefit category="Other benefits" name="Kidnap and hostage" id="30" coverage="NA"/>
+    <benefit category="Other benefits" name="Sports equipment protector (covers golf clubs, diving gear, skis (boards and poles), snowboards, wakeboards, bicycling and fishing tackle equipment.)" id="31" coverage="$2,000">
+    <limit name="(i) Single article limits" id="10" coverage="$500"/>
+    <limit name="(ii) golf hole in one" id="10" coverage="$250"/>
+    <limit name="(iii) green fees loss" id="10" coverage="$250"/>
+    </benefit>
+    <benefit category="Other benefits" name="Home protection (Get your home and family belongings protected from fire and theft while you're away.)" id="32" coverage="$1,000"/>
+    <benefit category="Other benefits" name="Rental vehicle excess and return (Get your car rental excess covered if you have an accident overseas.)" id="33" coverage="$500"/>
+    <benefit category="Other benefits" name="Hijack distress allowance - $300 for every full 6 consecutive hours" id="34" coverage="NA"/>
+    <benefit category="Other benefits" name="Pet care (Get $50 for every six hours that your return home is delayed to cover additional kennel costs.)" id="35" coverage="NA"/>
+    <benefit category="Other benefits" name="Adventure activity cover" id="36" coverage="covered"/>
+    <benefit category="Other benefits" name="Terrorism cover" id="37" coverage="covered"/>
+    <benefit category="Other benefits" name="Cover while on cruise" id="38" coverage="covered"/>
+    </benefits>
+    <premium>16</premium>
+    <type>Essential</type>
+    <orginal>16</orginal>
+    </plan>
+    </plans>
+    <travel_options>
+    <whoList>
+    <who code="I">Individual</who>
+    <who code="F">Family</who>
+    <who code="M">Multiple Individuals</who>
+    </whoList>
+    <regionList>
+    <region code="1">Region 1 - ASEAN</region>
+    <region code="2">Region 2 - ASIA</region>
+    <region code="3">Region 3 - Worldwide</region>
+    </regionList>
+    <nationalityList>
+    <nationality code="AF">Afghanistan</nationality>
+    <nationality code="AX">Aland Islands</nationality>
+    <nationality code="AL">Albania</nationality>
+    <nationality code="DZ">Algeria</nationality>
+    <nationality code="AS">American Samoa (US)</nationality>
+    <nationality code="AD">Andorra</nationality>
+    <nationality code="AO">Angola</nationality>
+    <nationality code="AI">Anguilla (UK)</nationality>
+    <nationality code="AQ">Antarctica</nationality>
+    <nationality code="AG">Antigua and Barbuda</nationality>
+    <nationality code="AR">Argentina</nationality>
+    <nationality code="AM">Armenia</nationality>
+    <nationality code="AW">Aruba</nationality>
+    <nationality code="AU">Australia</nationality>
+    <nationality code="AT">Austria</nationality>
+    <nationality code="AZ">Azerbaijan</nationality>
+    <nationality code="BS">Bahamas</nationality>
+    <nationality code="BH">Bahrain</nationality>
+    <nationality code="BD">Bangladesh</nationality>
+    <nationality code="BB">Barbados</nationality>
+    <nationality code="BY">Belarus</nationality>
+    <nationality code="BE">Belgium</nationality>
+    <nationality code="BZ">Belize</nationality>
+    <nationality code="BJ">Benin</nationality>
+    <nationality code="BM">Bermuda (UK)</nationality>
+    <nationality code="BT">Bhutan</nationality>
+    <nationality code="BO">Bolivia</nationality>
+    <nationality code="BQ">Bonaire, Sint Eustatius and Saba</nationality>
+    <nationality code="BA">Bosnia and Herzegovina</nationality>
+    <nationality code="BW">Botswana</nationality>
+    <nationality code="BV">Bouvet Island</nationality>
+    <nationality code="BR">Brazil</nationality>
+    <nationality code="IO">British Indian Ocean Territory</nationality>
+    <nationality code="VG">British Virgin Islands (UK)</nationality>
+    <nationality code="BN">Brunei Darussalam</nationality>
+    <nationality code="BG">Bulgaria</nationality>
+    <nationality code="BF">Burkina Faso</nationality>
+    <nationality code="BI">Burundi</nationality>
+    <nationality code="KH">Cambodia</nationality>
+    <nationality code="CM">Cameroon</nationality>
+    <nationality code="CA">Canada</nationality>
+    <nationality code="CV">Cape Verde</nationality>
+    <nationality code="KY">Cayman Islands (UK)</nationality>
+    <nationality code="CF">Central African Republic</nationality>
+    <nationality code="TD">Chad</nationality>
+    <nationality code="CL">Chile</nationality>
+    <nationality code="CN">China</nationality>
+    <nationality code="CX">Christmas Island (AU)</nationality>
+    <nationality code="CC">Cocos (Keeling) Islands (AU)</nationality>
+    <nationality code="CO">Colombia</nationality>
+    <nationality code="KM">Comoros</nationality>
+    <nationality code="CD">Congo, Democratic Republic of the</nationality>
+    <nationality code="CG">Congo, Republic of the</nationality>
+    <nationality code="CK">Cook Islands(NZ)</nationality>
+    <nationality code="CR">Costa Rica</nationality>
+    <nationality code="CL">Cote D'lvoire</nationality>
+    <nationality code="HR">Croatia</nationality>
+    <nationality code="CU">Cuba</nationality>
+    <nationality code="CW">Curacao</nationality>
+    <nationality code="CY">Cyprus</nationality>
+    <nationality code="CZ">Czech Republic</nationality>
+    <nationality code="DK">Denmark</nationality>
+    <nationality code="DJ">Djibouti</nationality>
+    <nationality code="DM">Dominica</nationality>
+    <nationality code="DO">Dominician Republic</nationality>
+    <nationality code="EC">Ecuador</nationality>
+    <nationality code="EG">Egypt</nationality>
+    <nationality code="SV">EI Salvador</nationality>
+    <nationality code="GQ">Equatorial guinea</nationality>
+    <nationality code="ER">Eritrea</nationality>
+    <nationality code="EE">Estonia</nationality>
+    <nationality code="ET">Ethiopia</nationality>
+    <nationality code="FK">Falkland Islands (UK)</nationality>
+    <nationality code="FO">Faroe Islands (DK)</nationality>
+    <nationality code="FJ">Fiji</nationality>
+    <nationality code="FI">Finland</nationality>
+    <nationality code="FR">France</nationality>
+    <nationality code="GF">French Guiana (FR)</nationality>
+    <nationality code="PF">French Polynesia (FR)</nationality>
+    <nationality code="TF">French Southern Territories</nationality>
+    <nationality code="GA">Gabon</nationality>
+    <nationality code="GM">Gambia</nationality>
+    <nationality code="GE">Georgia</nationality>
+    <nationality code="DE">Germany</nationality>
+    <nationality code="GH">Ghana</nationality>
+    <nationality code="GI">Gibraltar (UK)</nationality>
+    <nationality code="GR">Greece</nationality>
+    <nationality code="GL">Greenland (DK)</nationality>
+    <nationality code="GD">Grenada</nationality>
+    <nationality code="GP">Guadeloupe (FR)</nationality>
+    <nationality code="GU">Guam (US)</nationality>
+    <nationality code="GT">Guatemala</nationality>
+    <nationality code="GG">Guernsey</nationality>
+    <nationality code="GN">Guinea</nationality>
+    <nationality code="GW">Guinea-Bissau</nationality>
+    <nationality code="GY">Guyana</nationality>
+    <nationality code="HT">Haiti</nationality>
+    <nationality code="HM">Heard Island and McDonald Islands</nationality>
+    <nationality code="VA">Holy See (vatican City)</nationality>
+    <nationality code="HN">Honduras</nationality>
+    <nationality code="HK">Hong Kong (CN)</nationality>
+    <nationality code="HU">Hungary</nationality>
+    <nationality code="IS">Iceland</nationality>
+    <nationality code="IN">India</nationality>
+    <nationality code="ID">Indonesia</nationality>
+    <nationality code="IR">Iran</nationality>
+    <nationality code="IQ">Iraq</nationality>
+    <nationality code="IE">Ireland</nationality>
+    <nationality code="IM">Isle of Man</nationality>
+    <nationality code="IL">Israel</nationality>
+    <nationality code="IT">Italy</nationality>
+    <nationality code="JM">Jamaica</nationality>
+    <nationality code="JP">Japan</nationality>
+    <nationality code="JE">Jersey</nationality>
+    <nationality code="JO">Jordan</nationality>
+    <nationality code="Kz">Kazakhstan</nationality>
+    <nationality code="KE">Kenya</nationality>
+    <nationality code="KI">Kiribati</nationality>
+    <nationality code="KP">Korea, Democratic People's Republic (North)</nationality>
+    <nationality code="KR">Korea, Republic of (South)</nationality>
+    <nationality code="KW">Kuwait</nationality>
+    <nationality code="KG">Kyrgyzstan</nationality>
+    <nationality code="LA">Laos</nationality>
+    <nationality code="LV">Latvia</nationality>
+    <nationality code="LB">Lebanon</nationality>
+    <nationality code="LS">Lesotho</nationality>
+    <nationality code="LR">Liberia</nationality>
+    <nationality code="LY">Libya</nationality>
+    <nationality code="LI">Liechtenstein</nationality>
+    <nationality code="LT">Lithuania</nationality>
+    <nationality code="LU">Luxembourg</nationality>
+    <nationality code="MO">Macau(CN)</nationality>
+    <nationality code="MK">Macedonia</nationality>
+    <nationality code="MG">Madagascar</nationality>
+    <nationality code="MW">Malawi</nationality>
+    <nationality code="MY">Malaysia</nationality>
+    <nationality code="MV">Maldives</nationality>
+    <nationality code="ML">Mali</nationality>
+    <nationality code="MT">Malta</nationality>
+    <nationality code="MH">Marshall Islands</nationality>
+    <nationality code="MQ">Martinique (FR)</nationality>
+    <nationality code="MR">Mauritania</nationality>
+    <nationality code="MU">Mauritius</nationality>
+    <nationality code="YT">Mayotte (FR)</nationality>
+    <nationality code="MX">Mexico</nationality>
+    <nationality code="FM">Micronesia, Federated States of</nationality>
+    <nationality code="MD">Moldova Republic of</nationality>
+    <nationality code="MC">Monaco</nationality>
+    <nationality code="MN">Mongolia</nationality>
+    <nationality code="ME">Montenegro</nationality>
+    <nationality code="MS">Montserrat (UK)</nationality>
+    <nationality code="MA">Morocco</nationality>
+    <nationality code="MZ">Mozambique</nationality>
+    <nationality code="MM">Myanmar</nationality>
+    <nationality code="NA">Namibia</nationality>
+    <nationality code="NR">Nauru</nationality>
+    <nationality code="NP">Nepal</nationality>
+    <nationality code="NL">Netherlands</nationality>
+    <nationality code="NC">New Caledonia (FR)</nationality>
+    <nationality code="NZ">New Zealand</nationality>
+    <nationality code="NI">Nicaragua</nationality>
+    <nationality code="NE">Niger</nationality>
+    <nationality code="NG">Nigeria</nationality>
+    <nationality code="NU">Niue</nationality>
+    <nationality code="NF">Norfolk Island (AU)</nationality>
+    <nationality code="MP">Northern Mariana Islands (US)</nationality>
+    <nationality code="NO">Norway</nationality>
+    <nationality code="OM">Oman</nationality>
+    <nationality code="PK">Pakistan</nationality>
+    <nationality code="PW">Palau</nationality>
+    <nationality code="PS">Palestinian Territories</nationality>
+    <nationality code="PA">Panama</nationality>
+    <nationality code="PG">Papua New Guinea</nationality>
+    <nationality code="PY">Paraguay</nationality>
+    <nationality code="PE">Peru</nationality>
+    <nationality code="PH">Philippines</nationality>
+    <nationality code="PN">Pitcaim Islands (UK)</nationality>
+    <nationality code="PL">Poland</nationality>
+    <nationality code="PT">Portugal</nationality>
+    <nationality code="PR">Puerto Rico (US)</nationality>
+    <nationality code="QA">Qutar</nationality>
+    <nationality code="RE">Reunion (FR)</nationality>
+    <nationality code="RO">Romania</nationality>
+    <nationality code="RU">Russia</nationality>
+    <nationality code="RW">Rwanda</nationality>
+    <nationality code="BL">Saint Barthelemy</nationality>
+    <nationality code="SH">Saint Helena (UK)</nationality>
+    <nationality code="KN">Saint Kitts and Nevis</nationality>
+    <nationality code="LC">Saint Lucia</nationality>
+    <nationality code="MF">Saint Martin (French Part)</nationality>
+    <nationality code="PM">Saint Pierre &amp; Miquelon (FR)</nationality>
+    <nationality code="VC">Saint Vincent and the Grenadines</nationality>
+    <nationality code="WS">Samoa</nationality>
+    <nationality code="SM">San Marino</nationality>
+    <nationality code="ST">Sao Tome and Principe</nationality>
+    <nationality code="SA">Saudi arabia</nationality>
+    <nationality code="SN">Senegal</nationality>
+    <nationality code="RS">Serbia</nationality>
+    <nationality code="SC">Seychelles</nationality>
+    <nationality code="SL">Sierra Leone</nationality>
+    <nationality code="SG">Singapore</nationality>
+    <nationality code="SX">Sint Maarten (Dutch Part)</nationality>
+    <nationality code="SK">Slovakia</nationality>
+    <nationality code="SI">Solvenia</nationality>
+    <nationality code="SB">Solomon Islands</nationality>
+    <nationality code="SO">Somalia</nationality>
+    <nationality code="ZA">South Africa</nationality>
+    <nationality code="GS">South Georgia &amp; South Sandwich Islanda (UK)</nationality>
+    <nationality code="SS">South Sudan</nationality>
+    <nationality code="ES">Spain</nationality>
+    <nationality code="LK">Sri Lanka</nationality>
+    <nationality code="SD">Sudan</nationality>
+    <nationality code="SR">Suriname</nationality>
+    <nationality code="SJ">Svalbard and Jan Mayen</nationality>
+    <nationality code="SZ">Swaziland</nationality>
+    <nationality code="SE">Sweden</nationality>
+    <nationality code="CH">Switzerland</nationality>
+    <nationality code="SY">Syria</nationality>
+    <nationality code="TW">Taiwan</nationality>
+    <nationality code="TJ">Tajikistan</nationality>
+    <nationality code="TZ">Tanzania</nationality>
+    <nationality code="TH">Thailand</nationality>
+    <nationality code="TL">Timor-Leste</nationality>
+    <nationality code="TG">Togo</nationality>
+    <nationality code="TK">Tokelau</nationality>
+    <nationality code="TO">Tonga</nationality>
+    <nationality code="TT">Trinidad and Tobago</nationality>
+    <nationality code="TN">Tunisia</nationality>
+    <nationality code="TR">Turkey</nationality>
+    <nationality code="TM">Turkmenistan</nationality>
+    <nationality code="TC">Turks and Caicos Islands (UK)</nationality>
+    <nationality code="TV">Tuvalu</nationality>
+    <nationality code="UG">Uganda</nationality>
+    <nationality code="UA">Ukraine</nationality>
+    <nationality code="AE">United Arab Emirates</nationality>
+    <nationality code="GB">United Kingdom</nationality>
+    <nationality code="US">United States</nationality>
+    <nationality code="UM">United States Minor Outlying Islands</nationality>
+    <nationality code="UY">Uruguay</nationality>
+    <nationality code="UZ">Uzbekistan</nationality>
+    <nationality code="VU">Vanuatu</nationality>
+    <nationality code="VE">Venezuela</nationality>
+    <nationality code="VN">Vietnam</nationality>
+    <nationality code="VI">Virgin Islands (US)</nationality>
+    <nationality code="WF">Wallis and Futuna (FR)</nationality>
+    <nationality code="EH">Western Sahara</nationality>
+    <nationality code="YE">Yemen</nationality>
+    <nationality code="ZM">Zambia</nationality>
+    <nationality code="ZW">Zimbabwe</nationality>
+    </nationalityList>
+    <paymentOptionList>
+    <paymentOption code="CC">Credit Card</paymentOption>
+    </paymentOptionList>
+    <intermediary_notification/>
+    </travel_options>
+    <travel_details>
+    <error_message>1</error_message>
+    <selected_plan>Essential</selected_plan>
+    <min_discounted_Amount>0</min_discounted_Amount>
+    <adults>1</adults>
+    <discount/>
+    <decline_email>himanshu.upadhyay@ergo.com.sg</decline_email>
+    <cover>S</cover>
+    <whoCode>I</whoCode>
+    <regionCode>1</regionCode>
+    <children>0</children>
+    <imTravellingStatus>true</imTravellingStatus>
+    <RQStatus>T</RQStatus>
+    <b2bc>null</b2bc>
+    <crown>false</crown>
+    </travel_details>
+    </risk>
+    </quote>
+    

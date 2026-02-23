@@ -1,0 +1,117 @@
+{
+  "rules": [
+    {
+      "conditions": {
+        "all": [{ "fact": "age", "operator": "isLessThan", "value": 40 }]
+      },
+      "event": {
+        "type": "LOW",
+        "params": {
+          "premiumAmount": 5000,
+          "category": "age"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "age", "operator": "isEqualTo", "value": 40 }]
+      },
+      "event": {
+        "type": "MED",
+        "params": {
+          "premiumAmount": 6500,
+          "category": "age"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [
+          { "fact": "age", "operator": "isBetween", "value": [40,100] }
+        ]
+      },
+      "event": {
+        "type": "High",
+        "params": {
+          "premiumAmount": 8500,
+          "category": "age"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "age", "operator": "isEqualTo", "value": "100" }]
+      },
+      "event": {
+        "type": "Centuary",
+        "params": {
+          "premiumAmount": 9000,
+          "category": "age"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "age", "operator": "isGreaterThan", "value": 100 }]
+      },
+      "event": {
+        "type": "Ultra Aging",
+        "params": {
+          "premiumAmount": 10000,
+          "category": "age"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "productCheck", "operator": "isEqualTo", "value": "PA" }]
+      },
+      "event": {
+        "type": "PROD MATCH",
+        "params": {
+          "category": "product"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "productCheck", "operator": "isNotEqualTo", "value": "PA" }]
+      },
+      "event": {
+        "type": "PROD FAIL",
+        "params": {
+          "category": "product"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "keyword", "operator": "isEqualTo", "value": "123" }]
+      },
+      "event": {
+        "type": "test pass",
+        "params": {
+          "category": "keyword"
+        }
+      }
+    },
+    {
+      "conditions": {
+        "all": [{ "fact": "keyword", "operator": "isNotEqualTo", "value": "123" }]
+      },
+      "event": {
+        "type": "test fail",
+        "params": {
+          "category": "keyword"
+        }
+      }
+    }
+  ],
+  "functions": {
+    "fetchtablefilter1": "async function fetchtables() {   try {     const tableName = 'ergo_tp_annualpremium';     const filterObject = [{       COLNAME: 'who',       COLDATA: 'I',       COLTYPE: 'S',       COLOP: '='     }];       } catch (error) {     return {       error: true,       function: 'fetchtables',       message: error.message     };   } }",
+    "fetchtablefilter2": "async function fetchtablesNoFilter() {   try {     const tableName = 'ergo_tp_annualpremium';     const filterObject = [];         } catch (error) {     return {       error: true,       function: 'fetchtablesNoFilter',       message: error.message     };   } }",
+    "ignite": "function ignite(status, ruleEngineResponse, root) {   try {     const table1Response = fetchtablefilter1();     const table2Response = fetchtablefilter2();     if (table1Response?.error) return table1Response;     if (table2Response?.error) return table2Response;     console.log('Root received inside ignite:', JSON.stringify(root, null, 2));     const response = { successEvents: [], failureEvents: [] };       if (ruleEngineResponse.results?.length > 0) {       ruleEngineResponse.results.forEach((rule) => {         if (rule.result === true) {           response.successEvents.push({             type: rule.event.type,             params: rule.event.params,           });         }       });     }       if (ruleEngineResponse.failureEvents?.length > 0) {       ruleEngineResponse.failureEvents.forEach((failureEvent) => {         response.failureEvents.push({           type: failureEvent.type,           params: failureEvent.params,         });       });     }             const getEventByCategory = (category) => {       return response.successEvents.find(ev => ev.params?.category === category);     };     const ageEvent = getEventByCategory('age');     const productEvent = getEventByCategory('product');      const riskDetail = {       age: root.productJSON?.risk_locations?.risk_details?.age || 0,       risk: ageEvent?.type || 'N/A',       premiumAmount: ageEvent?.params?.premiumAmount || 0,     };     if (productEvent) riskDetail.productMatch = productEvent.type;      const finalResponse = {       product: root.product,       productCheck: root.productCheck,       status: root.status,       id: root.id,       versionNo: root.versionNo,       policyFrom: root.policyFrom,       policyTo: root.policyTo,       intermediaryId: root.intermediaryId,       accessToken: root.accessToken,       timestampCreated: root.timestampCreated,       timestampUpdated: root.timestampUpdated,       charges1: root.charges1,       charges2: root.charges2,       charges3: root.charges3,       userCreated: root.userCreated,       userUpdated: root.userUpdated,       productJSON: { risk_locations: [{ risk_details: [riskDetail] }] },     };     return finalResponse;   } catch (error) {     return { error: true, function: 'ignite', message: error.message };   } }",
+    "processPARequest": "async function processPARequest(status, root) {   try {     console.log('Root before calling ignite:', JSON.stringify(root, null, 2));     const facts = {       product: root.product,       status: root.status,       versionNo: root.versionNo,       policyFrom: root.policyFrom,       policyTo: root.policyTo,       intermediaryId: root.intermediaryId,       accessToken: root.accessToken,       timestampCreated: root.timestampCreated,       timestampUpdated: root.timestampUpdated,       age: root.productJSON?.risk_locations?.risk_details?.age || 0,     };     const rulesConfig = loadRules('PA');          const engine = initializeEngine(rulesConfig);     engine.addOperator('equalInt', (factValue, jsonValue) => {       return Number.isInteger(factValue) &&              Number.isInteger(jsonValue) &&              factValue === jsonValue;     });     engine.addFact('*', (params, almanac) => {       const factName = params.factParam;       const value = facts[factName];       if (value === undefined) {         console.warn(`⚠️ Fact '${factName}' is not defined in facts object.`);         return null;       }       return value;     });     const patchedRules = rulesConfig.rules.map((rule) => {       const patchedConditions = {         ...rule.conditions,         all: rule.conditions.all.map((condition) => ({           ...condition,           params: { factParam: condition.fact },           fact: '*',         })),       };       return { ...rule, conditions: patchedConditions };     });     engine.setRules(patchedRules);     const result = await engine.run(facts);     console.log('Result from engine:', result);     return ignite(status, result, root);   } catch (error) {     return {       error: true,       function: 'processPARequest',       message: error.message,     };   } }",
+    "createPAFactsFromRoot": "function createPAFactsFromRoot(root) {   try {     const facts = {};     facts.product = root.product;     facts.productCheck = root.productCheck;     facts.status = root.status;     facts.versionNo = root.versionNo;     facts.policyFrom = root.policyFrom;     facts.policyTo = root.policyTo;     facts.intermediaryId = root.intermediaryId;     facts.accessToken = root.accessToken;     facts.timestampCreated = root.timestampCreated;     facts.timestampUpdated = root.timestampUpdated;      const ageRaw = root.productJSON?.risk_locations?.risk_details?.age || 0;     facts.age = Number(ageRaw);     return facts;   } catch (error) {     return {       error: true,       function: 'createPAFactsFromRoot',       message: error.message,     };   } }" 
+  }
+}

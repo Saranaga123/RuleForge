@@ -1,0 +1,78 @@
+<quote>
+	<ergoQuoteSeq>80201</ergoQuoteSeq>
+	<branchCode>HO</branchCode>
+	<charges1>0.00</charges1>
+	<charges2>0.00</charges2>
+	<charges3>0.00</charges3>
+	<id>99213</id>
+	<intermediary>DIRECT</intermediary>
+	<annualPremium>0.00</annualPremium>
+	<payableGrossPremium>0.00</payableGrossPremium>
+	<payableNetPremium>0.00</payableNetPremium>
+	<charges1>0.00</charges1>
+	<charges2>0.00</charges2>
+	<charges3>0.00</charges3>
+	<policyFrom>2025-06-11</policyFrom>
+	<policyTo>2025-06-12</policyTo>
+	<product>QIC</product>
+	<quoteNo>TBD</quoteNo>
+	<status>RQ</status>
+	<teamCode>INTERNET</teamCode>
+	<timestampCreated>2025-06-11T08:05:46.000+04:00</timestampCreated>
+	<timestampUpdated>2025-06-11T08:05:46.000+04:00</timestampUpdated>
+	<userCreated>SYSTEM</userCreated>
+	<userUpdated>SYSTEM</userUpdated>
+	<versionNo>0</versionNo>
+	<risk effective="2025-06-11"
+	      version="1.5"
+	      code="QIC">
+		<crownRegions>
+			<crownRegion name="ASEAN"
+			             code="1"
+			             selected="?">
+				<premium>138</premium>
+			</crownRegion>
+			<crownRegion name="ASIA"
+			             code="2"
+			             selected="?">
+				<premium>180</premium>
+			</crownRegion>
+			<crownRegion name="Worldwide"
+			             code="3"
+			             selected="?">
+				<premium>283</premium>
+			</crownRegion>
+		</crownRegions>
+		<travel_options>
+			<whoList>
+				<who code="I">Individual</who>
+				<who code="F">Family</who>
+				<who code="M">Multiple Individuals</who>
+			</whoList>
+			<regionList>
+				<region code="1">GCC and Eu</region>
+				<region code="2">Worldwide Ex</region>
+				<region code="3">Worldwide</region>
+			</regionList>
+			<paymentOptionList>
+				<paymentOption code="CC">Credit Card</paymentOption>
+			</paymentOptionList>
+			<intermediary_notification/>
+		</travel_options>
+		<travel_details>
+			<error_message/>
+			<cover>S</cover>
+			<whoCode>I</whoCode>
+			<regionCode>1</regionCode>
+			<children>0</children>
+			<adults>1</adults>
+			<promoCode/>
+			<decline_email>lithinikakerk@gmail.com</decline_email>
+			<b2bc>false</b2bc>
+			<oneWay>false</oneWay>
+			<selectedPlan>Essential</selectedPlan>
+			<requireTripDelayCover>NO</requireTripDelayCover>
+			<crown>false</crown>
+		</travel_details>
+	</risk>
+</quote>

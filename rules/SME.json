@@ -1,0 +1,42 @@
+{
+  "rules": [
+    {
+      "conditions": {
+        "all": [
+          { "fact": "companySize", "operator": "equal", "value": "small" }
+        ]
+      },
+      "event": {
+        "type": "discount",
+        "params": { "discountPercentage": 5 }
+      }
+    },
+    {
+      "conditions": {
+        "all": [
+          { "fact": "companySize", "operator": "equal", "value": "medium" }
+        ]
+      },
+      "event": {
+        "type": "discount",
+        "params": { "discountPercentage": 10 }
+      }
+    },
+    {
+      "conditions": {
+        "all": [
+          { "fact": "companySize", "operator": "equal", "value": "large" }
+        ]
+      },
+      "event": {
+        "type": "discount",
+        "params": { "discountPercentage": 25 }
+      }
+    }
+  ],
+  "functions": {
+    "ignite": "function ignite(status, ruleEngineResponse, root) { const response = { successEvents: [], failureEvents: [] }; if (ruleEngineResponse.results && ruleEngineResponse.results.length > 0) { ruleEngineResponse.results.forEach(rule => { if (rule.result === true) { response.successEvents.push({ type: rule.event.type, params: rule.event.params }); } }); } if (ruleEngineResponse.failureEvents && ruleEngineResponse.failureEvents.length > 0) { ruleEngineResponse.failureEvents.forEach(failureEvent => { response.failureEvents.push({ type: failureEvent.type, params: failureEvent.params }); }); } const finalResponse = { status: root.status, product: root.product, id: root.id, versionNo: root.versionNo, policyFrom: root.policyFrom, policyTo: root.policyTo, intermediaryId: root.intermediaryId, accessToken: root.accessToken, timestampCreated: root.timestampCreated, timestampUpdated: root.timestampUpdated, charges1: root.charges1, charges2: root.charges2, charges3: root.charges3, userCreated: root.userCreated, userUpdated: root.userUpdated, productJSON: { risk_locations: [{ risk_details: [{ companySize: root.productJSON.risk_locations.risk_details.companySize, discount: response.successEvents[0].params.discountPercentage }] }] } }; return finalResponse; }",
+    "processSMERequest": "async function processSMERequest(status, root) { console.log('Root before calling ignite:', JSON.stringify(root, null, 2)); const facts = createSMEFactsFromRoot(root); const rulesConfig = loadRules('SME'); const engine = initializeEngine(rulesConfig); const result = await engine.run(facts); console.log('Result from engine:', result); return ignite(status, result, root); }",
+    "createSMEFactsFromRoot": "function createSMEFactsFromRoot(root) { const facts = {}; facts.product = root.product; facts.status = root.status; facts.companySize = root.companySize; facts.versionNo = root.versionNo; facts.policyFrom = root.policyFrom; facts.policyTo = root.policyTo; facts.intermediaryId = root.intermediaryId; facts.accessToken = root.accessToken; facts.timestampCreated = root.timestampCreated; facts.timestampUpdated = root.timestampUpdated; facts.companySize = root.productJSON.risk_locations.risk_details.companySize; return facts; }"
+  }
+}
