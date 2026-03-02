@@ -33,6 +33,6 @@ If you create a new product like "Health Insurance," you can simply add a new JS
 
 ✔️ Develop a Dev tool for JS to String.
 
-⏳ Matrix dev test sand box.
+✔️ ruleforge dev test sand box.
 
 ✔️ Rules Tables connection using APIs
