@@ -1,6 +1,10 @@
 const express = require("express");
 const xml2js = require("xml2js");
 const cors = require("cors");
+const path = require("path");
+const fs = require("fs");
+const cluster = require("cluster");
+const os = require("os");
 const { convertToXML } = require("./utils/xmlUtils");
 const { processEvaluation, processProductRequest } = require("./functions/productProcessor");
 
@@ -17,11 +21,40 @@ app.use(express.json({ limit: "500mb" }));
 app.use(express.urlencoded({ extended: true, limit: "500mb" }));
 app.use(express.text({ type: "application/xml" }));
 
+// CORS_ORIGIN (comma-separated) restricts which origins may call the API.
+// Left unset, any origin is allowed -- the previous behaviour, which the
+// hosted RuleForge Lab frontend relies on.
+const corsOrigins = (process.env.CORS_ORIGIN || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 app.use(cors({
-  origin: "*", // adjust to your frontend
+  origin: (origin, callback) => {
+    // Desktop mode serves the frontend and API from the same origin, on a
+    // port picked dynamically at launch -- it can never be in a hardcoded
+    // allowlist, and Chromium still sends an Origin header on same-origin
+    // POSTs. It's a single local user talking to its own embedded backend.
+    if (process.env.DESKTOP_MODE || !origin || corsOrigins.length === 0 || corsOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin ${origin} not allowed by CORS`));
+    }
+  },
   methods: "GET,POST,OPTIONS",
   allowedHeaders: "Content-Type",
 }));
+
+// Serves the RuleForge Lab Angular production build same-origin as the API
+// (used by the desktop-packaged app) when a build is present.
+// FRONTEND_DIST_PATH lets a packaged build point this at wherever the
+// frontend dist actually ships; it defaults to the sibling Lab project's dist.
+const FRONTEND_DIST =
+  process.env.FRONTEND_DIST_PATH ||
+  path.join(__dirname, "..", "RuleForge-Lab", "dist", "ruleforge");
+if (fs.existsSync(path.join(FRONTEND_DIST, "index.html"))) {
+  app.use(express.static(FRONTEND_DIST));
+}
 
 // Routes
 app.use("/", testfunc);
@@ -72,7 +105,7 @@ app.post("/testRun", async (req, res) => {
 
   } catch (error) {
     console.error("Error in /testRun:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Internal Server Error", message: error.message });
   }
 });
 
@@ -108,12 +141,44 @@ app.post("/evaluate", async (req, res) => {
 
   } catch (error) {
     console.error("Error in /evaluate:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Internal Server Error", message: error.message });
   }
 });
 
-// Start server locally
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Local server running at http://localhost:${PORT}`);
-});
+function startSingleInstance() {
+  // Without these, an unhandled rejection or uncaught exception anywhere
+  // (including in eval'd rule-JSON functions) kills this process with no
+  // logged reason. Log the real error before exiting (in cluster mode the
+  // primary respawns the worker; in desktop mode this makes a crash
+  // diagnosable in the app logs).
+  process.on("uncaughtException", (err) => {
+    console.error(`Worker ${process.pid} uncaughtException:`, err);
+    process.exit(1);
+  });
+  process.on("unhandledRejection", (reason) => {
+    console.error(`Worker ${process.pid} unhandledRejection:`, reason);
+    process.exit(1);
+  });
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Worker ${process.pid} running at http://localhost:${PORT}`);
+  });
+}
+
+if (process.env.DESKTOP_MODE) {
+  // A desktop app serves exactly one local user -- cluster's multi-core
+  // fan-out is unneeded there, so run a single Express instance directly.
+  startSingleInstance();
+} else if (cluster.isMaster) {
+  const numCPUs = os.cpus().length;
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+  cluster.on("exit", (worker, code, signal) => {
+    console.log(`Worker ${worker.process.pid} died (code=${code}, signal=${signal})`);
+    cluster.fork();
+  });
+} else {
+  startSingleInstance();
+}

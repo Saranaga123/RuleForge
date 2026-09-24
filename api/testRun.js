@@ -74,7 +74,7 @@ app.post("/testRun", async (req, res) => {
 
   } catch (error) {
     console.error("Error processing /testRun request:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: "Internal Server Error", message: error.message });
   }
 });
 
